@@ -1,5 +1,5 @@
 group 'com.nicholasnassar.ninja.api'
-version '0.0.1'
+version '0.0.1-SNAPSHOT'
 
 apply plugin: 'java'
 
@@ -21,3 +21,18 @@ task dist(type: Jar) {
 }
 
 dist.dependsOn classes
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(
+                    url: "${nexusUrl}/content/repositories/releases") {
+                authentication(userName: nexusUsername, password: nexusPassword)
+            }
+            snapshotRepository(
+                    url: "${nexusUrl}/content/repositories/snapshots") {
+                authentication(userName: nexusUsername, password: nexusPassword)
+            }
+        }
+    }
+}
