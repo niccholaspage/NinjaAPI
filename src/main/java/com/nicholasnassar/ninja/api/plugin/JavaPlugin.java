@@ -8,7 +8,7 @@ public class JavaPlugin implements Plugin {
     }
 
     public void onEnable() {
-
+        //TODO: Implement this
     }
 
     public void onDisable() {
